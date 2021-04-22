@@ -1,0 +1,21 @@
+debug: true
+server:
+  port: 80
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.netflix.discovery: 'OFF'
+---
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 069e65c790969aca6b9b
+            client-secret: a1d520fb54bb6619918949b01c4de7333856effb
+          google:
+            client-id: 821460190459-luk7lr0hsbqkduo00o956gc5mn1t32pm.apps.googleusercontent.com
+            client-secret: -8Hi8LsXoyTvtw-7icLQLJ0d
+
