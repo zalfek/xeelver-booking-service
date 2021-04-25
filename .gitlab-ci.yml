@@ -23,19 +23,14 @@ maven-test:
 maven-build:
   image: maven:3-jdk-11
   stage: build
-  script: "mvn package -B"
-  artifacts:
-    paths:
-      - target/*.jar
+  script: "mvn clean install"
+
 
 docker-build:
+  only:
+    - tags
+    - staging
   stage: package
   script:
     - docker build -t marmiss/search-service:${CI_COMMIT_TAG}
     - docker push marmiss/search-service:${CI_COMMIT_TAG}
-Deploy to Dev:
-  only:
-    - tags
-    - staging
-  stage: deploy
-  script: docker push marmiss/booking-service:${CI_COMMIT_TAG}
