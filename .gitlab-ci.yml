@@ -13,7 +13,7 @@ stages:
   - deploy
 
 maven-test:
-  image: maven:3-jdk-8
+  image: maven:3-jdk-11
   stage: build
   script: "mvn test"
   artifacts:
@@ -21,7 +21,7 @@ maven-test:
       - target/*.jar
 
 maven-build:
-  image: maven:3-jdk-8
+  image: maven:3-jdk-11
   stage: build
   script: "mvn package -B"
   artifacts:
