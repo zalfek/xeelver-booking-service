@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test
+  - deploy
+
+Docker build:
+  stage: build
+  script:
+    mvn clean install
+    docker build . -t marmiss/booking-service:${CI_COMMIT_TAG}
+  tags:
+    - docker
+
+Unit tests:
+  stage: test
+  script:
+    mvn test
+  tags:
+    - docker
+Linters:
+  stage: test
+  script:
+    - echo "this is linter test"
+Deploy to Dev:
+  only:
+    - tags
+    - staging
+  stage: deploy
+  script: docker push marmiss/booking-service:${CI_COMMIT_TAG}
