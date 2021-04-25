@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookingController {
 
-    @GetMapping("/api/secured")
+    @GetMapping("/api/booking")
     public String secured(){
-        return "authenticated";
+        return "Reply from Booking Service";
     }
 
 }
